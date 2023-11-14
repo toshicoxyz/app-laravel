@@ -19,6 +19,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', DashboardController::class);
+Route::get('/categoria', [CategoriaController::class, 'index'])->name('categoria.index');
 
-route::resource('/categoria', CategoriaController::class);
+Route::get('/categoria/search', [CategoriaController::class, 'search'])->name('categoria.search');
+
+Route::post('/categoria/create',  [CategoriaController::class, 'create'])->name('categoria.create');
+
+Route::delete('/categoria/destroy/{id}', [CategoriaController::class, 'destroy'])->name('categoria.destroy');
+
+Route::put('/categoria/edit/{id}', [CategoriaController::class, 'edit'])->name('categoria.edit');
+
+// Route::resource('/categoria', CategoriaController::class)->names([
+//     'index' => 'categoria.index',
+//     'store' => 'categoria.store',
+//     'show' => 'categoria.show',
+//     'edit' => 'categoria.edit',
+//     'update' => 'categoria.update'
+// ]);
