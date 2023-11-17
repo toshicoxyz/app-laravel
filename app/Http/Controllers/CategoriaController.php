@@ -24,31 +24,15 @@ class CategoriaController extends Controller
         $form = $request->all();
         $nombre = $form['nombre'];
         $descripcion = $form['descripcion'];
-        
+
         DB::table('categoria')->insert([
             'nombre' =>  $nombre,
             'descripcion' => $descripcion
         ]);
-        // return view('dashboard.categoria.create');
-        // return redirect()->back()->with('success',  $nombre);
-        // return response()->json($datosFormulario);
+
         return response($form);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        return response($request);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show()
-    {
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -76,9 +60,20 @@ class CategoriaController extends Controller
             ->where('nombre', 'like', "%$search%")
             ->orWhere('descripcion', 'like', "%$search%")
             ->get();
-        // $users = DB::table("categoria")->get();
-        // return view('dashboard.categoria.search', ['data' => $data]);
+
         return response()->json($data);
+    }
+
+    public function searchHtml(Request $request)
+    {
+        $search = $request->input('busqueda');
+
+        // Utilizando LIKE en la consulta
+        $data = DB::table('categoria')
+            ->where('nombre', 'like', "%$search%")
+            ->orWhere('descripcion', 'like', "%$search%")
+            ->get();
+        return view('dashboard.categoria.search', ['data' => $data]);
     }
 
     /**

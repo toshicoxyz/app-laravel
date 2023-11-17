@@ -25,6 +25,7 @@ Route::get('/', function () {
 // Rutas de categorías
 Route::get('/categoria', [CategoriaController::class, 'index'])->name('categoria.index');
 Route::get('/categoria/search', [CategoriaController::class, 'search'])->name('categoria.search');
+Route::get('/categoria/searchHtml', [CategoriaController::class, 'searchHtml'])->name('categoria.searchHtml');
 Route::post('/categoria/create', [CategoriaController::class, 'create'])->name('categoria.create');
 Route::delete('/categoria/destroy/{id}', [CategoriaController::class, 'destroy'])->name('categoria.destroy');
 Route::put('/categoria/edit/{id}', [CategoriaController::class, 'edit'])->name('categoria.edit');
@@ -32,11 +33,11 @@ Route::put('/categoria/edit/{id}', [CategoriaController::class, 'edit'])->name('
 // Rutas de cursos
 Route::get('/curso', [CursoController::class, 'index'])->name('curso.index');
 Route::get('/curso/search', [CursoController::class, 'search'])->name('curso.search');
+Route::get('/curso/searchHtml', [CursoController::class, 'searchHtml'])->name('curso.searchHtml');
 Route::post('/curso/create', [CursoController::class, 'create'])->name('curso.create');
 Route::delete('/curso/destroy/{id}', [CursoController::class, 'destroy'])->name('curso.destroy');
 Route::put('/curso/edit/{id}', [CursoController::class, 'edit'])->name('curso.edit');
     // Otras rutas de curso...
-
 
 // Route::resource('/categoria', CategoriaController::class)->names([
 //     'index' => 'categoria.index',

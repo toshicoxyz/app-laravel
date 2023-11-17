@@ -1,20 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Categoria } from './CategoriaCRUD';
-
-interface Curso {
-    id: number;
-    nombre: string;
-    activo: boolean;
-    imagen: string;
-    precio: number;
-    fecha_inicio?: string | null;
-    fecha_fin?: string | null;
-    created_at?: string | null;
-    updated_at?: string | null;
-    deleted_at?: string | null;
-    categoria_id: number;
-}
+import { Curso } from '../types/Curso';
+import { Categoria } from '../types/Categoria';
 
 export const CursoCRUD: React.FC = () => {
     const [data, setData] = useState<Curso[]>([]);
@@ -23,6 +10,7 @@ export const CursoCRUD: React.FC = () => {
     const [name, setName] = useState<string>('');
     const [imagen, setImagen] = useState<string>('');
     const [precio, setPrecio] = useState<number>(0);
+    const [showModal, setShowModal] = useState(false);
 
     // Obtener todos los usuarios
     const fetchData = async (busqueda: string = "") => {
@@ -74,7 +62,6 @@ export const CursoCRUD: React.FC = () => {
 
     return (
         <div className="container mt-5">
-            <h2>Curso</h2>
             <input
                 type="search"
                 className="form-control"
@@ -82,7 +69,10 @@ export const CursoCRUD: React.FC = () => {
                 defaultValue={""}
                 onChange={(e) => fetchData(e.target.value)}
             />
-            <div className="mb-3">
+            <button className="btn btn-primary" onClick={() => setShowModal(true)}>
+                Agregar Curso
+            </button>
+            {/* <div className="mb-3">
                 <input
                     type="text"
                     className="form-control"
@@ -119,17 +109,126 @@ export const CursoCRUD: React.FC = () => {
                 <button className="btn btn-primary mt-2" onClick={() => addUser({ nombre: name, precio, imagen, categoria_id: categoriaId } as Curso)}>
                     Agregar Usuario
                 </button>
-            </div>
-            <ul className="list-group">
-                {data.map((_) => (
-                    <li key={_.id} className="list-group-item d-flex justify-content-between align-items-center">
-                        {_.nombre} - {_.imagen} - {_.precio}
-                        <button className="btn btn-danger" onClick={() => deleteUser(_.id)}>
-                            Eliminar
-                        </button>
-                    </li>
-                ))}
-            </ul>
+            </div> */}
+
+            {showModal && (
+                <div className="modal" tabIndex={-1} role="dialog" style={{ display: 'block' }}>
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title">Agregar Curso</h5>
+                                <button
+                                    type="button"
+                                    className="close"
+                                    onClick={() => setShowModal(false)}
+                                >
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">
+                                <form>
+                                    <div className="form-group">
+                                        <label htmlFor="nombre">Nombre</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            id="nombre"
+                                            value={name}
+                                            onChange={(e) => setName(e.target.value)}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="imagen">Imagen URL</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            id="imagen"
+                                            value={imagen}
+                                            onChange={(e) => setImagen(e.target.value)}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="precio">Precio</label>
+                                        <input
+                                            type="number"
+                                            className="form-control"
+                                            id="precio"
+                                            value={precio}
+                                            onChange={(e) => setPrecio(Number(e.target.value))}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="categoria">Categoría</label>
+                                        <select
+                                            className="form-select"
+                                            value={categoriaId || ''}
+                                            onChange={(e) =>
+                                                setCategoriaId(Number(e.target.value) || null)
+                                            }
+                                        >
+                                            <option value="">Seleccionar Categoría</option>
+                                            {categorias.map((categoria) => (
+                                                <option key={categoria.id} value={categoria.id}>
+                                                    {categoria.nombre}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                            <div className="modal-footer">
+                                <button
+                                    type="button"
+                                    className="btn btn-secondary"
+                                    onClick={() => setShowModal(false)}
+                                >
+                                    Cerrar
+                                </button>
+                                <button
+                                    type="button"
+                                    className="btn btn-primary"
+                                    onClick={() =>
+                                        addUser({
+                                            nombre: name,
+                                            precio,
+                                            imagen,
+                                            categoria_id: categoriaId,
+                                        } as Curso)
+                                    }
+                                >
+                                    Guardar Curso
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {data.map((item) => (
+                        <tr key={item.id}>
+                            <td>{item.nombre}</td>
+                            <td>
+                                <img src={item.imagen} alt={item.nombre} style={{ maxWidth: '100px' }} />
+                            </td>
+                            <td>{item.precio}</td>
+                            <td>
+                                <button className="btn btn-danger" onClick={() => deleteUser(item.id)}>
+                                    Eliminar
+                                </button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 };

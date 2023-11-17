@@ -114,7 +114,7 @@
 
             // http://localhost/isilaravel/public/dashboard/categoria/search
             // zyggy laravel
-            const ruta = "{{ route('categoria.search') }}";
+            const ruta = "{{ route('categoria.searchHtml') }}";
 
             // promesas
             axios.get(ruta, {
