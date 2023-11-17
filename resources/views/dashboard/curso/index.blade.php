@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('dashboard.layouts.app')
 
 @section('titulo')
     Cursos | ISI Laravel
@@ -54,175 +54,29 @@
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                         <tr>
-                                            <th>Apellido paterno</th>
-                                            <th>Apellido materno</th>
-                                            <th>Nombres</th>
-                                            <th>Fecha de nacimiento</th>
-                                            <th>Opciones</th>
+                                            <th>Id</th>
+                                            <th>Nombre</th>
+                                            <th>Imagen</th>
+                                            <th>Activo</th>
+                                            <th>Categoria Id</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 4.0
-                                            </td>
-                                            <td>Win 95+</td>
-                                            <td> 4</td>
-                                            <td>
-                                                <button onclick="modalEditar(1)" class="btn btn-warning">Editar</button>
-                                                <button onclick="confirmarEliminar(1)"
-                                                    class="btn btn-danger">Eliminar</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 5.0
-                                            </td>
-                                            <td>Win 95+</td>
-                                            <td>5</td>
-                                            <td>
-                                                <button onclick="modalEditar(1)" class="btn btn-warning">Editar</button>
-                                                <button onclick="confirmarEliminar(1)"
-                                                    class="btn btn-danger">Eliminar</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 5.5
-                                            </td>
-                                            <td>Win 95+</td>
-                                            <td>5.5</td>
-                                            <td>
-                                                <button onclick="modalEditar(1)" class="btn btn-warning">Editar</button>
-                                                <button onclick="confirmarEliminar(1)"
-                                                    class="btn btn-danger">Eliminar</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 6
-                                            </td>
-                                            <td>Win 98+</td>
-                                            <td>6</td>
-                                            <td>
-                                                <button onclick="modalEditar(1)" class="btn btn-warning">Editar</button>
-                                                <button onclick="confirmarEliminar(1)"
-                                                    class="btn btn-danger">Eliminar</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Trident</td>
-                                            <td>Internet Explorer 7</td>
-                                            <td>Win XP SP2+</td>
-                                            <td>7</td>
-                                            <td>
-                                                <button onclick="modalEditar(1)" class="btn btn-warning">Editar</button>
-                                                <button onclick="confirmarEliminar(1)"
-                                                    class="btn btn-danger">Eliminar</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Trident</td>
-                                            <td>AOL browser (AOL desktop)</td>
-                                            <td>Win XP</td>
-                                            <td>6</td>
-                                            <td>
-                                                <button onclick="modalEditar(1)" class="btn btn-warning">Editar</button>
-                                                <button onclick="confirmarEliminar(1)"
-                                                    class="btn btn-danger">Eliminar</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Gecko</td>
-                                            <td>Firefox 1.0</td>
-                                            <td>Win 98+ / OSX.2+</td>
-                                            <td>1.7</td>
-                                            <td>
-                                                <button onclick="modalEditar(1)" class="btn btn-warning">Editar</button>
-                                                <button onclick="confirmarEliminar(1)"
-                                                    class="btn btn-danger">Eliminar</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Gecko</td>
-                                            <td>Firefox 1.5</td>
-                                            <td>Win 98+ / OSX.2+</td>
-                                            <td>1.8</td>
-                                            <td>
-                                                <button onclick="modalEditar(1)" class="btn btn-warning">Editar</button>
-                                                <button onclick="confirmarEliminar(1)"
-                                                    class="btn btn-danger">Eliminar</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Gecko</td>
-                                            <td>Firefox 2.0</td>
-                                            <td>Win 98+ / OSX.2+</td>
-                                            <td>1.8</td>
-                                            <td>
-                                                <button onclick="modalEditar(1)" class="btn btn-warning">Editar</button>
-                                                <button onclick="confirmarEliminar(1)"
-                                                    class="btn btn-danger">Eliminar</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Gecko</td>
-                                            <td>Firefox 3.0</td>
-                                            <td>Win 2k+ / OSX.3+</td>
-                                            <td>1.9</td>
-                                            <td>
-                                                <button onclick="modalEditar(1)" class="btn btn-warning">Editar</button>
-                                                <button onclick="confirmarEliminar(1)"
-                                                    class="btn btn-danger">Eliminar</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Gecko</td>
-                                            <td>Camino 1.0</td>
-                                            <td>OSX.2+</td>
-                                            <td>1.8</td>
-                                            <td>
-                                                <button onclick="modalEditar(1)" class="btn btn-warning">Editar</button>
-                                                <button onclick="confirmarEliminar(1)"
-                                                    class="btn btn-danger">Eliminar</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Gecko</td>
-                                            <td>Camino 1.5</td>
-                                            <td>OSX.3+</td>
-                                            <td>1.8</td>
-                                            <td>
-                                                <button onclick="modalEditar(1)" class="btn btn-warning">Editar</button>
-                                                <button onclick="confirmarEliminar(1)"
-                                                    class="btn btn-danger">Eliminar</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Gecko</td>
-                                            <td>Netscape 7.2</td>
-                                            <td>Win 95+ / Mac OS 8.6-9.2</td>
-                                            <td>1.7</td>
-                                            <td>
-                                                <button onclick="modalEditar(1)" class="btn btn-warning">Editar</button>
-                                                <button onclick="confirmarEliminar(1)"
-                                                    class="btn btn-danger">Eliminar</button>
-                                            </td>
-                                        </tr>
+                                        @foreach ($data as $item)
+                                            <tr>
+                                                <td>{{ $item->id }}</td>
+                                                <td>{{ $item->nombre }}</td>
+                                                <td>{{ $item->imagen }}</td>
+                                                <td>{{ $item->activo }}</td>
+                                                <td>{{ $item->categoria_id }}</td>
+                                                <td>
+                                                    <button onclick="modalEditar(1)" class="btn btn-warning">Editar</button>
+                                                    <button onclick="confirmarEliminar(1)"
+                                                        class="btn btn-danger">Eliminar</button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Apellido paterno</th>
-                                            <th>Apellido materno</th>
-                                            <th>Nombres</th>
-                                            <th>Fecha de nacimiento</th>
-                                            <th>Opciones</th>
-                                        </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                             <!-- /.card-body -->
@@ -254,15 +108,13 @@
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label" for="apellido_paterno">Apellido paterno</label>
                             <div class="col-sm-8">
-                                <input type="text" name="apellido_paterno" id="apellido_paterno"
-                                    class="form-control" />
+                                <input type="text" name="apellido_paterno" id="apellido_paterno" class="form-control" />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label" for="apellido_materno">Apellido materno</label>
                             <div class="col-sm-8">
-                                <input type="text" name="apellido_materno" id="apellido_materno"
-                                    class="form-control" />
+                                <input type="text" name="apellido_materno" id="apellido_materno" class="form-control" />
                             </div>
                         </div>
                         <div class="form-group row">
@@ -274,8 +126,7 @@
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label" for="fecha_nacimiento">Fecha de nacimiento</label>
                             <div class="col-sm-8">
-                                <input type="date" name="fecha_nacimiento" id="fecha_nacimiento"
-                                    class="form-control" />
+                                <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control" />
                             </div>
                         </div>
                     </div>

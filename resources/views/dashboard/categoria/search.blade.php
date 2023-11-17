@@ -110,10 +110,10 @@
             let formulario = document.getElementById('formulario-editar');
             let datosDelFormulario = new FormData(formulario);
 
-            const ruta = `/categoria/edit/${categoriaId}`;
+            const ruta = `categoria/edit/${categoriaId}`;
 
             // promesas
-            axios.put(ruta, datosDelFormulario).then(function(respuesta) {
+            axios.post(ruta, datosDelFormulario).then(function(respuesta) {
                     // search();
                     $('#modal-editar').modal('hide');
                     toastr.success('Actualizado correctamente');
@@ -126,6 +126,5 @@
         } else {
             console.error('ID de categoría no disponible');
         }
-
     }
 </script>

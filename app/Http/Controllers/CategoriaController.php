@@ -24,6 +24,7 @@ class CategoriaController extends Controller
         $form = $request->all();
         $nombre = $form['nombre'];
         $descripcion = $form['descripcion'];
+        
         DB::table('categoria')->insert([
             'nombre' =>  $nombre,
             'descripcion' => $descripcion
@@ -78,14 +79,6 @@ class CategoriaController extends Controller
         // $users = DB::table("categoria")->get();
         return view('dashboard.categoria.search', ['data' => $data]);
         // return response()->json($data);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
     }
 
     /**

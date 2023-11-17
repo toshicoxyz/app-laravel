@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\CursoController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,9 @@ Route::post('/categoria/create',  [CategoriaController::class, 'create'])->name(
 Route::delete('/categoria/destroy/{id}', [CategoriaController::class, 'destroy'])->name('categoria.destroy');
 
 Route::put('/categoria/edit/{id}', [CategoriaController::class, 'edit'])->name('categoria.edit');
+
+Route::get('/curso', [CursoController::class, 'index'])->name('curso.index');
+
 
 // Route::resource('/categoria', CategoriaController::class)->names([
 //     'index' => 'categoria.index',
