@@ -77,8 +77,8 @@ class CategoriaController extends Controller
             ->orWhere('descripcion', 'like', "%$search%")
             ->get();
         // $users = DB::table("categoria")->get();
-        return view('dashboard.categoria.search', ['data' => $data]);
-        // return response()->json($data);
+        // return view('dashboard.categoria.search', ['data' => $data]);
+        return response()->json($data);
     }
 
     /**
@@ -87,6 +87,5 @@ class CategoriaController extends Controller
     public function destroy(string $id)
     {
         DB::table('categoria')->where('id', $id)->delete();
-        return redirect()->back()->with('success',  "Se elimino la categoria");
     }
 }

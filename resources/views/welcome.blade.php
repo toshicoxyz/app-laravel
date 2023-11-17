@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    @viteReactRefresh
+    @vite('resources/js/app.tsx')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -129,9 +132,11 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Bienvenido</h1>
+                            <h1 class="m-0">Bienvenido 
+                            </h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
+                    <div id="app"></div>
                     <div class="row">
                         <div class="col-lg-3 col-6">
                             <!-- small box -->
