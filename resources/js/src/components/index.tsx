@@ -1,38 +1,33 @@
 import React from "react"
-import { CategoriaCRUD } from "./CategoriaCRUD"
-import IconReact from "../icon/IconReact"
-import IconLaravel from "../icon/IconLaravel"
 import { useState } from "react"
-import { CursoCRUD } from "./CursoCRUD"
+import { Toaster } from 'react-hot-toast';
+import { Section } from "../types/Section"
+import { renderSelectedOption } from "../services/Nav"
+import CityTours from "./Title"
 
 const App = () => {
-    const [section, setSection] = useState<"categoria" | "curso">("curso")
+    const [selectedOption, setSelectedOption] = useState<Section>('Lugares Turisticos');
+
 
     return <div className="text-center">
-        <div>
-            <IconReact /> + <IconLaravel />
-        </div>
-        <div className="btn-group " role="group" aria-label="Basic radio toggle button group" >
-            <input
-                type="radio"
-                className="btn-check"
-                name="categoria"
-                id="categoria"
-                autoComplete="off"
-                checked={section === "categoria"}
-                onChange={() => setSection("categoria")} />
-            <label className="btn btn-outline-primary" htmlFor="categoria">Categoría</label>
+        <Toaster />
+        <CityTours />
+        <h2
+            className={`h2-option ${selectedOption === "Regiones" ? "text-primary font-weight-bold" : "text-secondary"}`}
+            style={{ cursor: "pointer" }}
+            onClick={() => setSelectedOption("Regiones")}
+        >
+            Regiones
+        </h2>
+        <h2
+            className={`h2-option ${selectedOption === "Lugares Turisticos" ? "text-danger font-weight-bold" : "text-secondary"}`}
+            style={{ cursor: "pointer" }}
+            onClick={() => setSelectedOption("Lugares Turisticos")}
+        >
+            Lugares Turísticos
+        </h2>
 
-            <input type="radio"
-                className="btn-check"
-                name="curso" id="curso"
-                autoComplete="off"
-                checked={section === "curso"}
-                onChange={() => setSection("curso")} />
-            <label className="btn btn-outline-primary" htmlFor="curso">Curso</label>
-        </div>
-        {section === "categoria" && <CategoriaCRUD />}
-        {section === "curso" && <CursoCRUD />}
+        {renderSelectedOption(selectedOption)}
     </div>
 }
 
